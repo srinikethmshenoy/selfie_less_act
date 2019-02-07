@@ -1,0 +1,39 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+var count=0;
+function increment()
+{
+	count=count+1;
+	var r=document.getElementById("maindiv");
+	var f=document.getElementById("text");
+	r.removeChild(f);
+	var g=document.createElement("H1");
+	g.id="text"; 
+	var t=document.createTextNode(count);
+	t.id="innertext"; 
+	g.appendChild(t);
+	r.appendChild(g);
+}
+
+function uploadimage()
+{	var up=document.getElementById("upload");
+	var y=document.getElementById("browse");
+	var f=document.createElement("H1");
+	var t=document.createTextNode(y.value);
+	f.appendChild(t);
+	document.body.appendChild(f);
+	
+}
+</script>
+<div id="maindiv">
+<button id="butn" style="background: dodgerblue" onclick="increment()">upvote</button>
+<h1 id="text">hello</h1>
+<form id="upload-form" name="form" action="{{url_for('upload')}}" method="POST" enctype="multipart/form-data">
+<input type="file" name="file" id="browse"/>
+<input onclick="uploadimage()" type="submit" id="upload"  value="send"/>
+</form>
+</body>
+</html>
